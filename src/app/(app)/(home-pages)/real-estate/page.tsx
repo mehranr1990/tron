@@ -1,10 +1,8 @@
 import BackgroundSection from '@/components/BackgroundSection'
 import { RealEstateHeroSearchForm } from '@/components/HeroSearchForm/RealEstateHeroSearchForm'
 import SectionDowloadApp from '@/components/SectionDowloadApp'
-import SectionGridAuthorBox from '@/components/SectionGridAuthorBox'
 import SectionGridFeatureProperty from '@/components/SectionGridFeatureProperty'
 import SectionOurFeatures from '@/components/SectionOurFeatures'
-import SectionSliderNewCategories from '@/components/SectionSliderNewCategories'
 import SectionSubscribe2 from '@/components/SectionSubscribe2'
 import { getAuthors } from '@/data/authors'
 import { getRealEstateCategories } from '@/data/categories'
@@ -118,7 +116,7 @@ async function Home() {
           <HeadingWithSub isCenter subheading="Discover the stories behind our listings.">
             Meet our authors
           </HeadingWithSub>
-          <SectionGridAuthorBox boxCard="box2" authors={authors} />
+         
         </div>
         <SectionLogoCloud />
         <SectionDowloadApp />
@@ -126,7 +124,7 @@ async function Home() {
           <HeadingWithSub subheading="Explore the best places to stay in the world.">
             Let&apos;s go on an adventure
           </HeadingWithSub>
-          <SectionSliderNewCategories categoryCardType="card4" categories={categories.slice(0, 7)} />
+       
         </div>
 
         <SectionSubscribe2 />

@@ -16,9 +16,6 @@ const navigation: {
   solutions: [
     { name: 'Marketing', href: '#' },
     { name: 'Analytics', href: '#' },
-    { name: 'Automation', href: '#' },
-    { name: 'Commerce', href: '#' },
-    { name: 'Insights', href: '#' },
   ],
   support: [
     { name: 'Submit ticket', href: '#' },
@@ -28,7 +25,6 @@ const navigation: {
   company: [
     { name: 'About', href: '#' },
     { name: 'Blog', href: '#' },
-    { name: 'Jobs', href: '#' },
     { name: 'Press', href: '#' },
   ],
   legal: [

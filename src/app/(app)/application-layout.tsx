@@ -1,4 +1,4 @@
-import Footer2 from '@/components/Footer2'
+import Footer3 from '@/components/Footer3'
 import FooterQuickNavigation from '@/components/FooterQuickNavigation'
 import Header from '@/components/Header/Header'
 import HeroSearchFormMobile from '@/components/HeroSearchFormMobile/HeroSearchFormMobile'
@@ -29,7 +29,7 @@ const ApplicationLayout: React.FC<Props> = ({ children, header }) => {
       {/* FooterQuickNavigation - Displays on mobile devices and is fixed at the bottom of the screen */}
       <FooterQuickNavigation />
       {/* Chose footer style here!!!! */}
-      <Footer2 /> {/* <Footer /> or <Footer2 /> or <Footer3 /> or <Footer4 />*/}
+      <Footer3 /> 
       {/*  */}
       <AsideSidebarNavigation />
     </Aside.Provider>
