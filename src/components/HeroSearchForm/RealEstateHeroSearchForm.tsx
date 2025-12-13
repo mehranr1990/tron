@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation'
 import { FC, useEffect, useState } from 'react'
 import {
   ButtonSubmit,
+  GuestNumberField,
   LocationInputField,
   PriceRangeInputField,
   PropertyTypeSelectField,
@@ -58,7 +59,7 @@ export const RealEstateHeroSearchForm: FC<Props> = ({ className, formStyle = 'de
         className,
         formStyle === 'small' && 'rounded-t-2xl rounded-b-4xl custom-shadow-1',
         formStyle === 'default' &&
-          'rounded-t-2xl rounded-b-[40px] shadow-xl xl:rounded-t-3xl xl:rounded-b-[48px] dark:shadow-2xl'
+        'rounded-t-2xl rounded-b-[40px] shadow-xl xl:rounded-t-3xl xl:rounded-b-[48px] dark:shadow-2xl'
       )}
     >
       {/* RADIO */}
@@ -103,7 +104,13 @@ export const RealEstateHeroSearchForm: FC<Props> = ({ className, formStyle = 'de
           className="hero-search-form__field-before flex-1"
           clearDataButtonClassName={clsx(formStyle === 'small' && 'sm:end-18', formStyle === 'default' && 'sm:end-22')}
         />
-
+        <VerticalDividerLine />
+        <GuestNumberField
+          className="hero-search-form__field-before flex-1"
+          clearDataButtonClassName={clsx(formStyle === 'small' && 'sm:end-18', formStyle === 'default' && 'sm:end-22')}
+          fieldStyle={formStyle}
+        />
+        
         <ButtonSubmit fieldStyle={formStyle} />
       </div>
     </Form>

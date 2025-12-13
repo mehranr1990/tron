@@ -1,7 +1,6 @@
 import BackgroundSection from '@/components/BackgroundSection'
 import { RealEstateHeroSearchForm } from '@/components/HeroSearchForm/RealEstateHeroSearchForm'
 import SectionDowloadApp from '@/components/SectionDowloadApp'
-import SectionGridFeatureProperty from '@/components/SectionGridFeatureProperty'
 import SectionOurFeatures from '@/components/SectionOurFeatures'
 import SectionSubscribe2 from '@/components/SectionSubscribe2'
 import { getAuthors } from '@/data/authors'
@@ -110,7 +109,6 @@ async function Home() {
       <div className="relative container mb-24 flex flex-col gap-y-24 lg:mb-28 lg:gap-y-32">
         <SectionHero />
         <SectionOurFeatures type="type2" rightImg={ourFeatureImage} />
-        <SectionGridFeatureProperty listing={listings} />
         <div className="relative py-20">
           <BackgroundSection className="bg-neutral-100 dark:bg-black/20" />
           <HeadingWithSub isCenter subheading="Discover the stories behind our listings.">

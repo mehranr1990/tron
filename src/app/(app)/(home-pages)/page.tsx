@@ -2,6 +2,7 @@
 import BgGlassmorphism from '@/components/BgGlassmorphism'
 import HeroSectionWithSearchForm1 from '@/components/hero-sections/HeroSectionWithSearchForm1'
 import HeroSearchForm from '@/components/HeroSearchForm/HeroSearchForm'
+import { RealEstateHeroSearchForm } from '@/components/HeroSearchForm/RealEstateHeroSearchForm'
 import SectionClientSay from '@/components/SectionClientSay'
 import SectionHowItWork from '@/components/SectionHowItWork'
 import SectionOurFeatures from '@/components/SectionOurFeatures'
@@ -12,7 +13,6 @@ import { getStayListings } from '@/data/listings'
 import heroImage from '@/images/hero-right.png'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import { Divider } from '@/shared/divider'
-import HeadingWithSub from '@/shared/Heading'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -33,7 +33,8 @@ async function Page() {
           heading="Hotel, car, experiences"
           image={heroImage}
           imageAlt="hero"
-          searchForm={<HeroSearchForm initTab="Stays" />}
+          searchForm={
+            <RealEstateHeroSearchForm formStyle="default" />  }
           description={
             <>
               <p className="max-w-xl text-base text-neutral-500 sm:text-xl dark:text-neutral-400">
