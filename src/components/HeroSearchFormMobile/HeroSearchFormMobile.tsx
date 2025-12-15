@@ -5,11 +5,10 @@ import ButtonPrimary from '@/shared/ButtonPrimary'
 import ButtonThird from '@/shared/ButtonThird'
 import { ListingType } from '@/type'
 import T from '@/utils/getT'
-import { CloseButton, Dialog, DialogPanel, Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
+import { CloseButton, Dialog, DialogPanel, TabGroup, TabPanel, TabPanels } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 import {
   FilterVerticalIcon,
-  House03Icon,
   RealEstate02Icon,
   Search01Icon,
 } from '@hugeicons/core-free-icons'
@@ -18,10 +17,8 @@ import clsx from 'clsx'
 import { useState } from 'react'
 import { useTimeoutFn } from 'react-use'
 import RealestateSearchFormMobile from './real-estate-search-form/RealestateSearchFormMobile'
-import StaySearchFormMobile from './stay-search-form/StaySearchFormMobile'
 
 const formTabs: { name: ListingType; icon: IconSvgElement; formComponent: React.ComponentType<{}> }[] = [
-  { name: 'Stays', icon: House03Icon, formComponent: StaySearchFormMobile },
   { name: 'RealEstates', icon: RealEstate02Icon, formComponent: RealestateSearchFormMobile },
 ]
 
@@ -80,7 +77,7 @@ const HeroSearchFormMobile = ({ className }: { className?: string }) => {
                     </CloseButton>
                   </div>
 
-                  <TabList className="flex justify-center gap-x-8 sm:gap-x-14">
+                  {/* <TabList className="flex justify-center gap-x-8 sm:gap-x-14">
                     {formTabs.map((tab) => {
                       return (
                         <Tab
@@ -97,7 +94,7 @@ const HeroSearchFormMobile = ({ className }: { className?: string }) => {
                         </Tab>
                       )
                     })}
-                  </TabList>
+                  </TabList> */}
 
                   <TabPanels className="flex flex-1 overflow-hidden px-1.5 sm:px-4">
                     <div className="hidden-scrollbar flex-1 overflow-y-auto pt-2 pb-4">

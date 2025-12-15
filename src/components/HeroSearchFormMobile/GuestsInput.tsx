@@ -69,7 +69,6 @@ const GuestsInput: FC<Props> = ({ defaultValue, onChange, className }) => {
         description={T['HeroSearchForm']['Ages 2–12']}
         inputName="guestChildren"
       />
-
       <NcInputNumber
         className="mt-6 w-full"
         defaultValue={guestInfantsInputValue}
@@ -82,5 +81,4 @@ const GuestsInput: FC<Props> = ({ defaultValue, onChange, className }) => {
     </div>
   )
 }
-
 export default GuestsInput

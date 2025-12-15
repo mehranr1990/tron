@@ -10,6 +10,8 @@ import FieldPanelContainer from '../FieldPanelContainer'
 import LocationInput from '../LocationInput'
 import PriceRangeInput from './PriceRangeInput'
 import PropertyTypeSelect from './PropertyTypeSelect'
+import { GuestsObject } from '@/type'
+import GuestsInput from '../GuestsInput'
 
 type Tab = 'buy' | 'rent' | 'sell'
 const tabs = [
@@ -19,9 +21,9 @@ const tabs = [
 ] as const
 
 const RealestateSearchFormMobile = () => {
-  //
-  const [fieldNameShow, setFieldNameShow] = useState<'location' | 'propertyType' | 'price'>('location')
-  //
+  
+  const [fieldNameShow, setFieldNameShow] = useState<'location' | 'propertyType' | 'price'| 'guests'>('location')
+  
   const [tabType, setTabType] = useState<Tab>(tabs[0].value)
   const [locationInputTo, setLocationInputTo] = useState('')
   const [rangePrices, setRangePrices] = useState([10000, 400000])
@@ -41,8 +43,99 @@ const RealestateSearchFormMobile = () => {
     }
     router.push(url)
   }
-
   let typeStringConverted = selectedTypes.length ? selectedTypes.join(', ') : T['HeroSearchForm']['Add property']
+  const buyForm1 = (
+    <>
+    <FieldPanelContainer
+    isActive={fieldNameShow === 'location'}
+    headingOnClick={() => setFieldNameShow('location')}
+    headingTitle={T['HeroSearchForm']['Where']}
+    headingValue={locationInputTo || T['HeroSearchForm']['Location']}
+  >
+    <LocationInput
+      headingText={T['HeroSearchForm']['Where to find?']}
+      defaultValue={locationInputTo}
+      onChange={(value) => {
+        setLocationInputTo(value)
+        setFieldNameShow('propertyType')
+      }}
+    />
+  </FieldPanelContainer>
+
+  {/* SELECT */}
+  <FieldPanelContainer
+    isActive={fieldNameShow === 'propertyType'}
+    headingOnClick={() => setFieldNameShow('propertyType')}
+    headingTitle={T['HeroSearchForm']['Property']}
+    headingValue={typeStringConverted}
+  >
+    <PropertyTypeSelect onChange={setSelectedTypes} />
+  </FieldPanelContainer>
+
+  {/* PRICE RANGE  */}
+  <FieldPanelContainer
+    isActive={fieldNameShow === 'price'}
+    headingOnClick={() => setFieldNameShow('price')}
+    headingTitle={T['HeroSearchForm']['Price']}
+    headingValue={`$${convertNumbThousand(rangePrices[0] / 1000)}k ~ $${convertNumbThousand(rangePrices[1] / 1000)}k`}
+  >
+    <PriceRangeInput defaultValue={rangePrices} onChange={setRangePrices} />
+  </FieldPanelContainer>
+  </>
+  )
+  const [guestInput, setGuestInput] = useState<GuestsObject>({
+    guestAdults: 0,
+    guestChildren: 0,
+    guestInfants: 0,
+  })
+  const totalGuests = (guestInput.guestAdults || 0) + (guestInput.guestChildren || 0) + (guestInput.guestInfants || 0)
+  const guestStringConverted = totalGuests
+    ? `${totalGuests} ${T['HeroSearchForm']['Guests']}`
+    : T['HeroSearchForm']['Add guests']
+
+  const buyForm2 = (
+    <>
+    <FieldPanelContainer
+    isActive={fieldNameShow === 'location'}
+    headingOnClick={() => setFieldNameShow('location')}
+    headingTitle={T['HeroSearchForm']['Where']}
+    headingValue={locationInputTo || T['HeroSearchForm']['Location']}
+  >
+    <LocationInput
+      headingText={T['HeroSearchForm']['Where to find?']}
+      defaultValue={locationInputTo}
+      onChange={(value) => {
+        setLocationInputTo(value)
+        setFieldNameShow('propertyType')
+      }}
+    />
+  </FieldPanelContainer>
+
+  {/* SELECT */}
+  <FieldPanelContainer
+    isActive={fieldNameShow === 'propertyType'}
+    headingOnClick={() => setFieldNameShow('propertyType')}
+    headingTitle={T['HeroSearchForm']['Property']}
+    headingValue={typeStringConverted}
+  >
+    <PropertyTypeSelect onChange={setSelectedTypes} />
+  </FieldPanelContainer>
+
+  <FieldPanelContainer
+        isActive={fieldNameShow === 'guests'}
+        headingOnClick={() => setFieldNameShow('guests')}
+        headingTitle={T['HeroSearchForm']['Who']}
+        headingValue={guestStringConverted}
+      >
+        <GuestsInput defaultValue={guestInput} onChange={setGuestInput} />
+      </FieldPanelContainer>
+</>
+  )
+  const buyForm3 = (
+    <div className="relative flex">
+      <PriceRangeInput defaultValue={rangePrices} onChange={setRangePrices} />
+    </div>
+  )
   return (
     <Form id="form-hero-search-form-mobile" action={handleFormSubmit} className="flex w-full flex-col gap-y-3">
       {/* RADIO */}
@@ -66,41 +159,16 @@ const RealestateSearchFormMobile = () => {
       </Headless.RadioGroup>
 
       {/* LOCATION INPUT */}
-      <FieldPanelContainer
-        isActive={fieldNameShow === 'location'}
-        headingOnClick={() => setFieldNameShow('location')}
-        headingTitle={T['HeroSearchForm']['Where']}
-        headingValue={locationInputTo || T['HeroSearchForm']['Location']}
-      >
-        <LocationInput
-          headingText={T['HeroSearchForm']['Where to find?']}
-          defaultValue={locationInputTo}
-          onChange={(value) => {
-            setLocationInputTo(value)
-            setFieldNameShow('propertyType')
-          }}
-        />
-      </FieldPanelContainer>
-
-      {/* SELECT */}
-      <FieldPanelContainer
-        isActive={fieldNameShow === 'propertyType'}
-        headingOnClick={() => setFieldNameShow('propertyType')}
-        headingTitle={T['HeroSearchForm']['Property']}
-        headingValue={typeStringConverted}
-      >
-        <PropertyTypeSelect onChange={setSelectedTypes} />
-      </FieldPanelContainer>
-
-      {/* PRICE RANGE  */}
-      <FieldPanelContainer
-        isActive={fieldNameShow === 'price'}
-        headingOnClick={() => setFieldNameShow('price')}
-        headingTitle={T['HeroSearchForm']['Price']}
-        headingValue={`$${convertNumbThousand(rangePrices[0] / 1000)}k ~ $${convertNumbThousand(rangePrices[1] / 1000)}k`}
-      >
-        <PriceRangeInput defaultValue={rangePrices} onChange={setRangePrices} />
-      </FieldPanelContainer>
+      {tabType === 'buy' && (
+        buyForm1
+      )}
+      {tabType === 'rent' && (
+        buyForm2
+      )}
+      {tabType === 'sell' && (
+        buyForm3
+      )}
+    
     </Form>
   )
 }

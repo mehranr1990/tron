@@ -50,7 +50,58 @@ export const RealEstateHeroSearchForm: FC<Props> = ({ className, formStyle = 'de
     }
     router.push(url)
   }
+  const buyForm1 = (
+    <div className="relative flex">
+      <LocationInputField
+        className="hero-search-form__field-after flex-1"
+        description="Location, city, or property name"
+        fieldStyle={formStyle}
+      />
+      <VerticalDividerLine />
+      <PropertyTypeSelectField
+        fieldStyle={formStyle}
+        className="hero-search-form__field-before hero-search-form__field-after flex-1"
+      />
+      <VerticalDividerLine />
+      <PriceRangeInputField
+        fieldStyle={formStyle}
+        className="hero-search-form__field-before flex-1"
+        clearDataButtonClassName={clsx(formStyle === 'small' && 'sm:end-18', formStyle === 'default' && 'sm:end-22')}
+      />
 
+      <ButtonSubmit fieldStyle={formStyle} />
+    </div>
+  )
+  const buyForm2 = (
+    <div className="relative flex">
+      <LocationInputField
+        className="hero-search-form__field-after flex-1"
+        description="Location, city, or property name"
+        fieldStyle={formStyle}
+      />
+      <VerticalDividerLine />
+      <PropertyTypeSelectField
+        fieldStyle={formStyle}
+        className="hero-search-form__field-before hero-search-form__field-after flex-1"
+      />
+      <VerticalDividerLine />
+      <GuestNumberField
+        className="hero-search-form__field-before flex-1"
+        clearDataButtonClassName={clsx(formStyle === 'small' && 'sm:end-18', formStyle === 'default' && 'sm:end-22')}
+        fieldStyle={formStyle}
+      />
+      <ButtonSubmit fieldStyle={formStyle} />
+    </div>
+  )
+  const buyForm3 = (
+    <div className="relative flex">
+      <LocationInputField
+        className="hero-search-form__field-after flex-1"
+        description="Location, city, or property name"
+        fieldStyle={formStyle}
+      />
+      </div>
+  )
   return (
     <Form
       action={handleFormSubmit}
@@ -86,33 +137,15 @@ export const RealEstateHeroSearchForm: FC<Props> = ({ className, formStyle = 'de
         ))}
       </Headless.RadioGroup>
 
-      {/*  */}
-      <div className="relative flex">
-        <LocationInputField
-          className="hero-search-form__field-after flex-1"
-          description="Location, city, or property name"
-          fieldStyle={formStyle}
-        />
-        <VerticalDividerLine />
-        <PropertyTypeSelectField
-          fieldStyle={formStyle}
-          className="hero-search-form__field-before hero-search-form__field-after flex-1"
-        />
-        <VerticalDividerLine />
-        <PriceRangeInputField
-          fieldStyle={formStyle}
-          className="hero-search-form__field-before flex-1"
-          clearDataButtonClassName={clsx(formStyle === 'small' && 'sm:end-18', formStyle === 'default' && 'sm:end-22')}
-        />
-        <VerticalDividerLine />
-        <GuestNumberField
-          className="hero-search-form__field-before flex-1"
-          clearDataButtonClassName={clsx(formStyle === 'small' && 'sm:end-18', formStyle === 'default' && 'sm:end-22')}
-          fieldStyle={formStyle}
-        />
-        
-        <ButtonSubmit fieldStyle={formStyle} />
-      </div>
+      {tabType === 'buy' && (
+        buyForm1
+      )}
+      {tabType === 'rent' && (
+        buyForm2
+      )}
+      {tabType === 'sell' && (
+        buyForm3
+      )}
     </Form>
   )
 }
