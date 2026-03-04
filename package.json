@@ -38,7 +38,9 @@
     "react-swipeable": "^7.0.2",
     "react-use": "^17.6.0",
     "sharp": "^0.34.1",
-    "typescript": "^5.2.2"
+    "tronweb": "^6.2.1",
+    "typescript": "^5.2.2",
+    "zustand": "^5.0.11"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.5",

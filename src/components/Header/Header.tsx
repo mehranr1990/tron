@@ -10,6 +10,8 @@ import CurrLangDropdown from './CurrLangDropdown'
 import HamburgerBtnMenu from './HamburgerBtnMenu'
 import MegaMenuPopover from './MegaMenuPopover'
 import NotifyDropdown from './NotifyDropdown'
+import ConnectButton from '../wallet/ConnectButton'
+import WalletDropdown from '../wallet/WalletDropdown'
 interface HeaderProps {
   hasBorderBottom?: boolean
   className?: string
@@ -45,8 +47,8 @@ const Header: FC<HeaderProps> = async ({ hasBorderBottom = true, className }) =>
             </div>
           
             {/* <CurrLangDropdown currencies={currencies} languages={languages} className="hidden md:block" /> */}
-         
-            
+              <WalletDropdown/>
+              {/* <ConnectButton/> */}
             <AvatarDropdown />
           </div>
         </div>

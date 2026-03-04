@@ -10,34 +10,28 @@ import { usePathname } from 'next/navigation'
 
 const solutions = [
   {
-    name: T['Header']['DropdownTravelers']['Stays'],
+    name: "Home",
     description: T['Header']['DropdownTravelers']['stayDescription'],
     href: '/',
     icon: House04Icon,
   },
   {
-    name: T['Header']['DropdownTravelers']['Real Estate'],
+    name: "About Us",
     description: T['Header']['DropdownTravelers']['estateDescription'],
-    href: '/real-estate',
+    href: '/about',
     icon: Building03Icon,
   },
   {
-    name: T['Header']['DropdownTravelers']['Cars'],
+    name: "Profile",
     description: T['Header']['DropdownTravelers']['carDescription'],
-    href: '/car',
+    href: '/authors',
     icon: Car03Icon,
   },
   {
-    name: T['Header']['DropdownTravelers']['Experiences'],
+    name: "Contact Us",
     description: T['Header']['DropdownTravelers']['experienceDescription'],
-    href: '/experience',
+    href: '/contact',
     icon: HotAirBalloonIcon,
-  },
-  {
-    name: T['Header']['DropdownTravelers']['Flights'],
-    description: T['Header']['DropdownTravelers']['Flight description'],
-    href: '/flight-categories/all',
-    icon: Airplane02Icon,
   },
 ]
 
@@ -83,7 +77,7 @@ export default function DropdownTravelers() {
             })}
           </div>
           {/* FOOTER */}
-          <div className="bg-neutral-50 p-4 dark:bg-neutral-700">
+          {/* <div className="bg-neutral-50 p-4 dark:bg-neutral-700">
             <Link
               href="/"
               className="focus-visible:ring-opacity-50 flow-root space-y-0.5 rounded-md px-2 py-2 focus:outline-none focus-visible:ring focus-visible:ring-orange-500"
@@ -95,7 +89,7 @@ export default function DropdownTravelers() {
                 {`${T['Header']['DropdownTravelers']['footerDescription']}`}
               </span>
             </Link>
-          </div>
+          </div> */}
         </div>
       </PopoverPanel>
     </Popover>

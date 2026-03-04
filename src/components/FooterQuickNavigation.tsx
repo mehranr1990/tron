@@ -10,24 +10,26 @@ import { useAside } from './aside'
 
 const FOOTER_QUICK_NAV = [
   {
-    name: 'Explore',
+    name: 'Home',
     link: '/',
     icon: MagnifyingGlassIcon,
   },
   {
-    name: 'Wishlists',
-    link: '/account-savelists',
-    icon: HeartIcon,
-  },
-  {
-    name: 'Account',
+    name: 'Profile',
     link: '/authors/john-doe',
     icon: UserCircleIcon,
   },
   {
-    name: 'Menu',
-    icon: Bars3Icon,
+    name: 'About Us',
+    link: '/about',
+    icon: HeartIcon,
   },
+  {
+    name: 'Contact',
+    link: '/contact',
+    icon: HeartIcon,
+  },
+ 
 ]
 const SCROLL_THRESHOLD = 80
 

@@ -5,11 +5,9 @@ import ExperiencesCard from '@/components/ExperiencesCard'
 import PropertyCard from '@/components/PropertyCard'
 import StayCard from '@/components/StayCard'
 import {
-  getCarListings,
   getExperienceListings,
   getRealEstateListings,
   getStayListings,
-  TCarListing,
   TExperienceListing,
   TRealEstateListing,
   TStayListing,
@@ -17,7 +15,7 @@ import {
 import { Tab, TabGroup, TabList } from '@headlessui/react'
 import { useEffect, useState } from 'react'
 
-const tabs = ['Stays', 'Experiences', 'Real Estate', 'Car Rentals'] as const
+const tabs = ['Stays'] as const
 
 interface Props {
   onChangeTab?: (item: string) => void
@@ -25,9 +23,6 @@ interface Props {
 
 const ListingTabs = ({ onChangeTab }: Props) => {
   const [stayListings, setStayListings] = useState<TStayListing[]>([])
-  const [carListings, setCarListings] = useState<TCarListing[]>([])
-  const [experienceListings, setExperienceListings] = useState<TExperienceListing[]>([])
-  const [realEstateListings, setRealEstateListings] = useState<TRealEstateListing[]>([])
   const [activeTab, setActiveTab] = useState<(typeof tabs)[number]>(tabs[0])
 
   useEffect(() => {
@@ -35,20 +30,11 @@ const ListingTabs = ({ onChangeTab }: Props) => {
       if (activeTab === 'Stays' && !stayListings.length) {
         const stays = await getStayListings()
         setStayListings(stays)
-      } else if (activeTab === 'Car Rentals' && !carListings.length) {
-        const cars = await getCarListings()
-        setCarListings(cars)
-      } else if (activeTab === 'Experiences' && !experienceListings.length) {
-        const experiences = await getExperienceListings()
-        setExperienceListings(experiences)
-      } else if (activeTab === 'Real Estate' && !realEstateListings.length) {
-        const realEstates = await getRealEstateListings()
-        setRealEstateListings(realEstates)
       }
     }
 
     fetchListings()
-  }, [activeTab, stayListings.length, carListings.length, experienceListings.length, realEstateListings.length])
+  }, [stayListings.length])
 
   const handleTabChange = async (index: number) => {
     onChangeTab && onChangeTab(tabs[index])
@@ -76,13 +62,7 @@ const ListingTabs = ({ onChangeTab }: Props) => {
       <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-7">
         {activeTab === 'Stays' && stayListings.slice(0, 4).map((stay) => <StayCard key={stay.id} data={stay} />)}
 
-        {activeTab === 'Car Rentals' && carListings.slice(0, 4).map((car) => <CarCard key={car.id} data={car} />)}
-
-        {activeTab === 'Experiences' &&
-          experienceListings.slice(0, 4).map((experience) => <ExperiencesCard key={experience.id} data={experience} />)}
-
-        {activeTab === 'Real Estate' &&
-          realEstateListings.slice(0, 4).map((realEstate) => <PropertyCard key={realEstate.id} data={realEstate} />)}
+       
       </div>
     </div>
   )

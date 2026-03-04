@@ -4,6 +4,7 @@ import Header from '@/components/Header/Header'
 import HeroSearchFormMobile from '@/components/HeroSearchFormMobile/HeroSearchFormMobile'
 import Aside from '@/components/aside'
 import AsideSidebarNavigation from '@/components/aside-sidebar-navigation'
+import { TronWalletProvider } from '@/context/TronWalletProvider'
 import 'rc-slider/assets/index.css'
 import React, { ReactNode } from 'react'
 
@@ -14,6 +15,7 @@ interface Props {
 
 const ApplicationLayout: React.FC<Props> = ({ children, header }) => {
   return (
+    <TronWalletProvider>
     <Aside.Provider>
       {/* Desktop Header - Will be hidden on mobile devices  */}
       <div className="relative z-20 hidden lg:block">{header ? header : <Header />}</div>
@@ -33,6 +35,7 @@ const ApplicationLayout: React.FC<Props> = ({ children, header }) => {
       {/*  */}
       <AsideSidebarNavigation />
     </Aside.Provider>
+    </TronWalletProvider>
   )
 }
 

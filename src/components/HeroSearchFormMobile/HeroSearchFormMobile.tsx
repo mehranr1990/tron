@@ -17,6 +17,7 @@ import clsx from 'clsx'
 import { useState } from 'react'
 import { useTimeoutFn } from 'react-use'
 import RealestateSearchFormMobile from './real-estate-search-form/RealestateSearchFormMobile'
+import WalletDropdown from '../wallet/WalletDropdown'
 
 const formTabs: { name: ListingType; icon: IconSvgElement; formComponent: React.ComponentType<{}> }[] = [
   { name: 'RealEstates', icon: RealEstate02Icon, formComponent: RealestateSearchFormMobile },
@@ -118,10 +119,7 @@ const HeroSearchFormMobile = ({ className }: { className?: string }) => {
                     >
                       {T['HeroSearchForm']['Clear all']}
                     </ButtonThird>
-                    <ButtonPrimary type="submit" form="form-hero-search-form-mobile" onClick={closeModal}>
-                      <HugeiconsIcon icon={Search01Icon} size={16} />
-                      <span>{T['HeroSearchForm']['search']}</span>
-                    </ButtonPrimary>
+                    <WalletDropdown/>
                   </div>
                 </TabGroup>
               )}
